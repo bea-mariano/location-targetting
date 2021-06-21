@@ -1,0 +1,3 @@
+{"type":"FeatureCollection","features":[
+{"type":"Feature","id":"01","properties":{"name":"Alabama","density":94.65},"geometry": {"type": "Point","coordinates": [120.67932128906249,15.172879337054226]}}
+]}
