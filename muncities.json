@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "A title",
+        "description": "A description",
+        "marker-size": "large",
+        "marker-symbol": "bus",
+        "marker-color": "#0000FF",
+        "stroke": "#555555",
+        "stroke-opacity": 1.0,
+        "stroke-width": 2,
+        "fill": "#555535",
+        "fill-opacity": 1.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.67932128906249,
+          15.172879337054226
+        ]
+      }
+    }
+  ]
+}
