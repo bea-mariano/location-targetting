@@ -12,13 +12,13 @@ library(tidyr)
 #### Load Datasets ####
 
 sales_reg <- fread(
-  file = "./Data/output_sales_reg.csv"
+  file = "./Data/OUTPUT_SALESREG.csv"
 )
 dim(sales_reg)
 names(sales_reg)
 
 cmdpsr <- fread(
-  file = "./Data/output_cmdpsr.csv"
+  file = "./Data/OUTPUT_CMDPSR.csv"
 )
 dim(cmdpsr)
 names(cmdpsr)
@@ -40,7 +40,7 @@ Topsheet_init <- cmdpsr %>%
     "CUSTOMER_CD",
     "CUSTOMER_NAME",
     
-    "No Contact Nos.",
+    "No Contact Nos",
     "Same Cust. Name + Brgy. + Municipality",
     "Same Contact Person + Brgy. + Municipality",
     "Same Number + Brgy. + Municipality",
@@ -51,7 +51,7 @@ Topsheet_init <- cmdpsr %>%
     "CUSTOMER_CD" = "CUST_CD",
     "CUSTOMER_NAME" = "CUST_NAME",
     
-    "No Contact Nos." = "No Contact Number",
+    "No Contact Nos" = "No Contact Number",
     "Same Cust. Name + Brgy. + Municipality" = "Same CustmrName +B+M",
     "Same Contact Person + Brgy. + Municipality" = "Same Contact Pn +B+M",
     "Same Number + Brgy. + Municipality" = "Same Number +B+M",
@@ -139,12 +139,27 @@ flags_EXCFRA$totalFlags <- rowSums(flags_EXCFRA[,c(
 
 flags_EXCFRA$reportDate <- as_datetime( # Get month end datetime
   paste0(
-    year(as_datetime(flags_EXCFRA$DOC_DT, "%m/%d/%Y %I:%M:%S %p", tz = "Asia/Kuala_Lumpur")),
+    str_pad(
+      year(
+        as_datetime(flags_EXCFRA$DOC_DT, "%m/%d/%Y %I:%M:%S %p", tz = "Asia/Kuala_Lumpur")
+      ), 
+      2, side = "left", pad = "0"
+    ),
     "-",
-    month(as_datetime(flags_EXCFRA$DOC_DT, "%m/%d/%Y %I:%M:%S %p", tz = "Asia/Kuala_Lumpur")),
+    str_pad(
+      month(
+        as_datetime(flags_EXCFRA$DOC_DT, "%m/%d/%Y %I:%M:%S %p", tz = "Asia/Kuala_Lumpur")
+      ), 
+      2, side = "left", pad = "0"
+    ),
     "-",
-    days_in_month(
-      month(as_datetime(flags_EXCFRA$DOC_DT, "%m/%d/%Y %I:%M:%S %p", tz = "Asia/Kuala_Lumpur"))
+    str_pad(
+      days_in_month(
+        month(
+          as_datetime(flags_EXCFRA$DOC_DT, "%m/%d/%Y %I:%M:%S %p", tz = "Asia/Kuala_Lumpur")
+        )
+      ), 
+      2, side = "left", pad = "0"
     )
   ),
   tz = "Asia/Kuala_Lumpur"
